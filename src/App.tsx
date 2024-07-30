@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import { useId } from "react";
 import "./App.css";
 
 type User = { firstName: string; lastName: string };
@@ -15,7 +16,13 @@ function UserCard(props: { firstName: string; lastName: string }) {
     </div>
   );
 }
+function MyComp() {
+  const first = useId();
+  console.log(first); // :r0:
 
+  const second = useId();
+  console.log(second); // :r1:
+}
 function App() {
   const user = { firstName: "John", lastName: "Doe" };
 
@@ -23,6 +30,7 @@ function App() {
     <>
       <div>
         <UserCard {...user} />
+        <MyComp />
         <button onClick={() => alert(`Hello, ${user.firstName}!`)}>
           Greet
         </button>
